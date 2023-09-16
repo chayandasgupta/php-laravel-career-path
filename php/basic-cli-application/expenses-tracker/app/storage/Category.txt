@@ -1,0 +1,11 @@
+Income Categories:
+  1. Salary
+  2. Business
+  3. Rent
+
+Expense Categories:
+  1. Family
+  2. Personal
+  3. Recreations
+  4. Sadakah
+  5. Gift
