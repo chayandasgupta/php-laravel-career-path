@@ -8,6 +8,8 @@ class Authentication
   public function __construct(StorageInterface $storage)
   {
     $this->storage = $storage;
+
+    $this->users = $this->storage->loadData(User::getModelName());
   }
 
   public function register(string $name, string $email, string $password)
@@ -20,11 +22,18 @@ class Authentication
     $this->users[] = $customer;
     $this->saveUser();
 
-    printf("Customer registered successfully\n\n");
+    printf("Registration successful. You can now log in.\n\n");
   }
 
-  public function login()
+  public function login(string $email, string $password)
   {
+    foreach ($this->users as $user) {
+      if ($user->getEmail() === $email && $user->getPassword() === $password) {
+        return $user;
+      }
+    }
+
+    return null;
   }
 
   public function saveUser(): void

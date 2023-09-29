@@ -44,4 +44,9 @@ class User implements ModelInterface
   {
     $this->password = $password;
   }
+
+  public function getType(): UserType
+  {
+    return $this->type;
+  }
 }
