@@ -195,14 +195,41 @@ class AppController
 
 	public function adminPanel(): void
 	{
-	}
+		$transaction = new FinanceManager(new FileStorage());
+		// $transaction = new FinanceManager(new FileStorage());
 
-	function validateDepositAmount($amount)
-	{
+		while (true) {
+			echo "Select from the following menu:\n";
 
+			// Menu Lists
+			foreach ($this->adminMenuOptions as $option => $adminMenuLabel) {
+				printf("%d. %s\n", $option, $adminMenuLabel);
+			}
 
+			echo "\n";
+			$choice = readline("Enter your choice:");
 
-		// If all checks pass, the amount is valid
-		return true;
+			switch ($choice) {
+				case self::SHOW_All_TRANSACTION;
+					$transaction->showAllTransactions();
+					break;
+
+				case self::SPECIFIC_USER_TRANSACTION;
+					$customerEmail = trim(readline("Enter customer email: "));
+					$transaction->showTransactions($customerEmail);
+					break;
+
+				case self::SHOW_CUSTOMERS;
+					$transaction->showAllCustomers();
+					break;
+
+				case self::LOGOUT;
+					$this->run();
+					break;
+
+				default:
+					echo "Invalid\n";
+			}
+		}
 	}
 }
