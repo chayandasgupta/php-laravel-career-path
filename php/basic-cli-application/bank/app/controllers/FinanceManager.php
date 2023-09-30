@@ -7,7 +7,7 @@ class FinanceManager
   private array $transactions;
   private array $users;
 
-  public function __construct(StorageInterface $storage, string $user)
+  public function __construct(StorageInterface $storage, string $user = '')
   {
     $this->storage = $storage;
     $this->user    = $user;
@@ -15,13 +15,41 @@ class FinanceManager
     $this->users        = $this->storage->loadData(User::getModelName());
   }
 
-  public function showTransactions()
+  public function showTransactions(string $customerEmail = null): void
+  {
+    printf("Transaction Lists\n");
+    printf("----------------------------------\n");
+    if ($customerEmail) {
+      foreach ($this->transactions as $transaction) {
+        if ($transaction->getUser() === $customerEmail) {
+          printf("Amount: %.2f, TransactionType: %s\n\n", $transaction->getAmount(), $transaction->getType()->name);
+        }
+      }
+    } else {
+      foreach ($this->transactions as $transaction) {
+        if ($transaction->getUser() === $this->user) {
+          printf("Amount: %.2f, TransactionType: %s\n\n", $transaction->getAmount(), $transaction->getType()->name);
+        }
+      }
+    }
+  }
+
+  public function showAllTransactions(): void
   {
     printf("Transaction Lists\n");
     printf("----------------------------------\n");
     foreach ($this->transactions as $transaction) {
-      if ($transaction->getUser() === $this->user) {
-        printf("Amount: %.2f, TransactionType: %s\n\n", $transaction->getAmount(), $transaction->getType()->name);
+      printf("Amount: %.2f, User: %s, TransactionType: %s\n\n", $transaction->getAmount(), $transaction->getUser(), $transaction->getType()->name);
+    }
+  }
+
+  public function showAllCustomers(): void
+  {
+    printf("Customers Lists\n");
+    printf("----------------------------------\n");
+    foreach ($this->users as $user) {
+      if ($user->getType() === UserType::CUSTOMER) {
+        printf("Name: %s, Email: %s\n\n", $user->getName(), $user->getEmail());
       }
     }
   }

@@ -25,6 +25,19 @@ class Authentication
     printf("Registration successful. You can now log in.\n\n");
   }
 
+  public function adminRegister(string $name, string $email, string $password)
+  {
+    $admin = new Admin();
+    $admin->setName($name);
+    $admin->setEmail($email);
+    $admin->setPassword($password);
+
+    $this->users[] = $admin;
+    $this->saveUser();
+
+    printf("Admin created successfully.\n\n");
+  }
+
   public function login(string $email, string $password)
   {
     foreach ($this->users as $user) {
