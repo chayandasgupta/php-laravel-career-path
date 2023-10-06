@@ -1,5 +1,12 @@
 <?php
 
+namespace App\Controllers;
+
+use App\StorageInterface;
+use App\models\User;
+use App\models\Admin;
+use App\models\Customer;
+
 class Authentication
 {
   private StorageInterface $storage;

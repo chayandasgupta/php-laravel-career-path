@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-require_once '../app/StorageInterface.php';
+namespace App;
+
+use App\StorageInterface;
 
 class FileStorage implements StorageInterface
 {
@@ -27,6 +29,6 @@ class FileStorage implements StorageInterface
 
   public function getModelPath($model)
   {
-    return 'storage/' . $model . ".txt";
+    return 'app/storage/' . $model . ".txt";
   }
 }

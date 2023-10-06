@@ -1,7 +1,12 @@
 <?php
 
 declare(strict_types=1);
-require_once '../app/models/Transaction.php';
+
+namespace App\models;
+
+use App\models\Transaction;
+
+use App\TransactionType;
 
 class Withdraw extends Transaction
 {
