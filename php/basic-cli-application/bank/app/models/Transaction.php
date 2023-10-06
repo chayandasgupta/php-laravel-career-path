@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+namespace App\models;
+
+use App\ModelInterface;
+use App\TransactionType;
+
 class Transaction implements ModelInterface
 {
   private float $amount;

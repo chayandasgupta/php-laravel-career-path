@@ -1,13 +1,15 @@
 <?php
 
 declare(strict_types=1);
-require_once './controllers/Authentication.php';
-require_once './FileStorage.php';
-require_once './models/User.php';
-require_once './UserType.php';
-require_once './models/Admin.php';
 
-class Admins
+namespace App;
+
+require "vendor/autoload.php";
+
+use App\Controllers\Authentication;
+use App\FileStorage;
+
+class Admin
 {
   private Authentication $auth;
 
@@ -21,4 +23,4 @@ class Admins
   }
 }
 
-$admin = new Admins();
+$admin = new Admin();

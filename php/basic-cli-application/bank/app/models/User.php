@@ -1,7 +1,11 @@
 <?php
 
 declare(strict_types=1);
-require_once '../app/ModelInterface.php';
+// require_once '../app/ModelInterface.php';
+namespace App\models;
+
+use App\ModelInterface;
+use App\UserType;
 
 class User implements ModelInterface
 {

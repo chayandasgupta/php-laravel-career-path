@@ -1,5 +1,12 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Controllers\Authentication;
+use App\FileStorage;
+// use App\StorageInterface;
+use App\UserType;
+
 class AppController
 {
 

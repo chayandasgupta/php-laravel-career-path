@@ -1,6 +1,9 @@
 <?php
 
-require_once '../app/models/User.php';
+namespace App\models;
+
+use App\models\User;
+use App\UserType;
 
 class Customer extends User
 {

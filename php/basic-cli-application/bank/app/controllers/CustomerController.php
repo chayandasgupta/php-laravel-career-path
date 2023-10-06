@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 require_once '../app/models/User.php';
 class CustomerController extends User
 {

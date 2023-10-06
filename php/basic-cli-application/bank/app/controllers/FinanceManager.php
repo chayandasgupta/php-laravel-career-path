@@ -1,5 +1,15 @@
 <?php
 
+namespace App\Controllers;
+
+use App\StorageInterface;
+use App\models\Transaction;
+use App\models\User;
+use App\models\Deposit;
+use App\models\Withdraw;
+use App\UserType;
+use App\TransactionType;
+
 class FinanceManager
 {
   private StorageInterface $storage;
